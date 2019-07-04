@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myVueCode</title>
+</head>
+<body>
+    <div id="myVue">
+        {{modle.test}}
+        <p v-html="test"></p>
+		{{fromData}} 
+        <input type="text" v-model="fromData">
+        <button @click="changeValue">通过绑定的click事件动态修改input中默认值</button>
+		<!-- <ul>
+			<li v-for="(item,index) in list">{{item.data}}</li>
+		</ul> -->
+    </div>
+    <script src="./myVue.js"></script>
+    <script>
+        new Vue({
+            el: '#myVue',
+            data:{
+                fromData: '这是input绑定的fromData的默认值',
+                test: '<P>使用v-html插入DOM</p>',
+                modle:{
+                    test:"这是双花括号的模板输出"
+                },
+				list:[
+					{
+						data:"list1",
+						id:'1'
+					},
+					{
+						data:"list2",
+						id:'2'
+					}
+				]
+            },
+            methods:{
+                changeValue(){
+					var vm=this;
+                    console.log(vm.fromData)
+                    vm.fromData = '动态修改input中默认值'
+                }
+            }
+        })
+    </script>
+</body>
+</html>
